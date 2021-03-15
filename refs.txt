@@ -1,0 +1,12 @@
+https://medium.com/@arthurxavier/error-handling-in-long-promise-chains-155f610b5bc6
+https://www.javascripttutorial.net/javascript-try-catch/
+//errors
+
+https://betterprogramming.pub/callbacks-vs-promises-in-javascript-1f074e93a3b5
+https://www.toptal.com/javascript/asynchronous-javascript-async-await-tutorial
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await
+https://eloquentjavascript.net/11_async.html
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises
+https://codeburst.io/javascript-learn-promises-f1eaa00c5461
+https://adrianmejia.com/promises-tutorial-concurrency-in-javascript-node/
+https://www.youtube.com/watch?v=cCOL7MC4Pl0
