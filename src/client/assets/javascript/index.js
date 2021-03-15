@@ -103,9 +103,8 @@ async function handleCreateRace() {  ////////START HERE//////////
 	await startRace(store.race_id)
 	// TODO - call the async function runRace
 	await runRace(store.race_id)
-	} catch { 
-    	console.log("")
-
+	} catch(error) { 
+    	console.log("error: ", error.message)
 	}
 }
 
