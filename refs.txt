@@ -10,3 +10,12 @@ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises
 https://codeburst.io/javascript-learn-promises-f1eaa00c5461
 https://adrianmejia.com/promises-tutorial-concurrency-in-javascript-node/
 https://www.youtube.com/watch?v=cCOL7MC4Pl0
+
+https://knowledge.udacity.com/questions/504688
+https://knowledge.udacity.com/questions/445732
+https://knowledge.udacity.com/questions/287834
+https://knowledge.udacity.com/questions/393522
+https://knowledge.udacity.com/questions/398601
+https://knowledge.udacity.com/questions/405819
+https://knowledge.udacity.com/questions/357528
+https://github.com/udacity/nd032-c3-asynchronous-programming-with-javascript-project-starter/issues/6
