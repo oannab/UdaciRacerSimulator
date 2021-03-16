@@ -78,21 +78,23 @@ async function handleCreateRace() {  ////////START HERE//////////
 	// TODO - Get player_id and track_id from the store
 	// const race = TODO - invoke the API call to create the race, then save the result
 	//try { await f()}
+	const player_id = store.player_id;
+	const track_id = store.track_id;
 	try {
-		const player_id = store.player_id;
-		const track_id = store.track_id;
-		
-		if (!player_id || !track_id){
+		/*if (!player_id || !track_id){
 			console.log("Track and/or Player NOT Selected")
 			return `Error: Select Track and Player`
-		}
+		}*/
 		const race = await createRace(player_id, track_id);
+		player_id = race.PlayerID;
+		store.race_id = parseInt(race.ID) - 1 //https://knowledge.udacity.com/questions/445732
 		console.log("Race: ", race)
+		console.log(store.race_id)
 		
 // TODO - update the store with the race id
 		renderAt('#race', renderRaceStartView(race.Track, race.Cars))
 		console.log("raceid", store.race_id);
-		store.race_id = parseInt(race.ID) - 1
+		
 
 	await runCountdown()
 	// The race has been created, now start the countdown
@@ -110,8 +112,9 @@ function runRace(raceID) {
 	return new Promise(resolve => {
 	// TODO - use Javascript's built in setInterval method to get race info every 500ms
 		const raceInterval = setInterval(async () => {
-			getRace(raceID)
-			.then((racing) => {
+			try {
+				let racing = await getRace(raceID)
+				console.log(racing)
 				if (racing.status === "in-progress") {
 						renderAt('#leaderBoard', raceProgress(racing.positions))
 				}else if (racing.status === "finished") {
@@ -119,8 +122,9 @@ function runRace(raceID) {
 					renderAt('#race', resultsView(racing.positions)) // to render the results view
 					reslove(racing) // resolve the promise
 				}
-			})
-			.catch((error) => console.log(error.message));
+			} catch(error) { 
+				console.log(error.message)
+			};
 		}, 500)
 	})//.catch(error => 
 		//TODO - if the race info status property is "in-progress", update the leaderboard by calling:
@@ -192,7 +196,7 @@ function handleSelectTrack(target) {
 function handleAccelerate() {
 	console.log("accelerate button clicked")
 	// TODO - Invoke the API call to accelerate
-	accelerate(store.track_id - 1)
+	accelerate(store.race_id - 1) // https://knowledge.udacity.com/questions/451483 race_id -1 ??//track_id -1
 	//accelerate.track-id - 1  in order to ush up in ranks
 }
 
@@ -360,10 +364,10 @@ function getTracks() {
 
 function getRacers() {
 	// GET request to `${SERVER}/api/cars`
-	return fetch(`${SERVER}/api/cars`, { ///eu
-		method: 'GET',
-		...defaultFetchOpts(),
-	})
+	return fetch(`${SERVER}/api/cars`//, { ///eu
+	//	method: 'GET',
+	//	...defaultFetchOpts(),}
+	)
 	.then(res => res.json())
 	.catch(err => console.log("Problem with createRace request::", err, err.message))
 	
@@ -373,6 +377,7 @@ function createRace(player_id, track_id) {
 	player_id = parseInt(player_id)  //declared in handleCreateRace
 	track_id = parseInt(track_id) //declared in handleCreateRace
 	const body = { player_id, track_id }
+	console.log(store);
 	
 	return fetch(`${SERVER}/api/races`, {
 		method: 'POST',
@@ -386,10 +391,10 @@ function createRace(player_id, track_id) {
 
 function getRace(id) {
 	// GET request to `${SERVER}/api/races/${id}`
-	return fetch(`${SERVER}/api/races/${id}`, {
-		method: 'GET',
-		...defaultFetchOpts(),
-	})
+	return fetch(`${SERVER}/api/races/${id}`//, {
+		//method: 'GET',
+		//...defaultFetchOpts(),}
+	)
 		.then(res => res.json())
 		.catch(err => console.log("Problem with getRace request::", err, err.message));
 }
@@ -406,7 +411,7 @@ function startRace(id) {
 function accelerate(id) {
 	// POST request to `${SERVER}/api/races/${id}/accelerate`
 	return fetch(`${SERVER}/api/races/${id}/accelerate`, {
-		method: 'POST',
+		method: 'POST'
 	})
 	// options parameter provided as defaultFetchOpts
 	// no body or datatype needed for this request
