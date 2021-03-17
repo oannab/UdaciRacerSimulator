@@ -1,14 +1,20 @@
 # Welcome to the One and only UdaciRacer Simulation Game
 
 ## Project Introduction
+This project scope is to further my knowledge aquired in Udacity's Intermediate Javascript Nanodegree.
 
-Here is a partially built-out game that races cars—your job is to complete it! Throughout the game logic, you will find _"TODO"_ comments that must be completed in order for the game to work. You are going to use the asynchronous skills you gained in the course to fill in the blanks in this game.
+The game was partially built (comments throught code underline which parts we're already made). In order to practice asynchronous code, an API is provided which needs to be setup as per directions below. Once the API and front-end terminals are running the project opens up as a landing page - the only functioning button. 
+This page displays players and tracks as a starting point.
+The game is created by requesting API for each race, track, player and accelerate f() endpoints. In order to display these options, the APIs are invoked by creating callback functions in an asynchronous manner. 
+The functions vary between Promise-returning f() - asynchronism is contained within the promise chain, the Promise is returned in order to acces .then() clause - ; whilst the async/await f() are entirely wrapper f(), the entire f() is a Promise - awaits on another function's result in order to resolve/reject and to which further advancement of the app relies on.
 
-The game mechanics are this: you select a player and track, the game begins and you accelerate your racer by clicking an acceleration button. As you accelerate so do the other players and the leaderboard live-updates as players change position on the track. The final view is a results page displaying the players' rankings.
+Enter the game. To create and start a race, select a player then select a track. 
+The race starts after the countdown. The button is used to accelerate - click as fast - to advance in race and leaderboard. The leaderboard is also updated live and influences ranking between players.
+The finish line will render players' rankings.
 
 The game has three main views:
 
-1. The form to create a race
+1. The form to create a race: choose one track and one player
 
 2. The race progress view (this includes the live-updating leaderboard and acceleration button)
 
@@ -16,7 +22,7 @@ The game has three main views:
 
 ## Starter Code
 
-We have supplied you with the following:
+Starter code was supplied with the following:
 
 1. An API. The API is provided in the form of a binary held in the bin folder. You never need to open the binary file, as there are no edits you can make to it. Your work will be 100% in the front end.
 
@@ -41,6 +47,7 @@ To run the server, locate your operating system and run the associated command i
 Note that this process will use your terminal tab, so you will have to open a new tab and navigate back to the project root to start the front end.
 
 #### WINDOWS USERS -- Setting Environment Variables
+In a separate terminal:
 If you are using a windows machine:
 1. `cd` into the root of the project containing data.json 
 2. Run the following command to add the environment variable:
@@ -50,7 +57,7 @@ If you still run into issues running the API server on your machine, you can run
 
 
 ### Start the Frontend
-
+In a separate terminal:
 First, run your preference of `npm install && npm start` or `yarn && yarn start` at the root of this project. Then you should be able to access http://localhost:3000.
 
 ## Project Requirements
